@@ -1,0 +1,60 @@
+# 문장, 수식 모두 프린트 가능
+print("This is my first Python program")
+print(23*570/100)
+
+# 문장과 문장을 이을 때 (숫자와 문장을 +로 연결하는 것은 불가능)
+a=27
+b=419
+print(a+b)
+
+mystr1 = 'Hello'
+mystr2 = 'Python'
+print(mystr1 + ',' + mystr2)
+print('Hello, Python')
+
+# 메시지 반복은 *을 이용
+message= 'Welcome!'
+print(message*3)
+
+# string index는 0부터 시작(띄어쓰기도 1칸으로 처리) , -는 맨뒤 부터 1을 시작으로 카운트.
+mystr = 'Oh my God! I won the lottery!'
+print(mystr[1])  # = h
+print(mystr[-7])  # = o
+
+print(mystr[3:9]) # from mystr[3] to mystr[8] = my God
+
+# tpye()
+var = 23.561
+print(var, 'is of type' , type(var)) # = 23.561 is of type <class 'float'>
+
+var='python'
+print(var, 'is of type' , type(var)) # = python is of type <class 'str'>
+
+var=2019
+print(var, 'is of type', type(var)) # = 2019 is of type <class 'int'>
+
+
+# 연산
+num1 = 2684
+num2 = 124
+add = num1 + num2 
+sub = num1 - num2 
+mul = num1*num2 
+div = num1/num2
+mod = num1 % num2 #나머지
+
+# Homework 1
+radius =12.5
+pie = 3.14
+Cf= 2*pie*radius
+Area=pie*radius*radius
+
+print('radius =', radius)
+print('Circumference =', Cf)
+print('Area =', Area)
+
+# Homework 2
+km = float(input('Enter anyhing number:'))
+mile = 0.621371 * km
+
+print(km,'Km is equal to ', mile , 'miles')

@@ -1,0 +1,84 @@
+# if.. else
+x = int(input('Enter value:'))
+if x >= 0 :
+    print(x, 'is positive or zero.')
+else :
+    print(x, 'is negative.')
+
+# Example
+score=int(input('Enter your score:'))
+if score > 80:
+    print('Your score is {}.Pass'.format(score))
+else:
+    print('Your score is {}.Fail' .format(score))
+
+# if.. if... else
+
+x = int(input('Enter a value:'))
+
+if x >=0:
+    if x==0:
+        print(x, 'is zero.')
+    else :
+        print(x, 'is a positive number.')
+else:
+    print(x,'is a negative umber.')
+
+
+# if.. elif.. else
+score=int(input('Enter a score :'))
+
+if score >=90:
+    print('Grade: A')
+elif 80 <= score < 90:
+    print('Grade: B')
+elif 70 <= score < 80:
+    print('Grade: C')
+else :
+    print('Grade: F')
+
+# Exercise 1 : Sample Output
+a=int(input('Please Enter the First Angle of a Triangle :'))
+b=int(input('Please Enter the Second Angle of a Triangle:'))
+c=int(input('Please Enter the Third Angle of a Triangle:'))
+
+if a+b+c==180 :
+    print('This is a Valid Triangle')
+else :
+    print('This is an Invalid Triangle')
+
+# Exercise 2 : Sample Output
+a= float(input('Enter the score of subject 1:'))
+b= float(input('Enter the score of subject 2:'))
+c= float(input('Enter the score of subject 3:'))
+d= float(input('Enter the score of subject 4:'))
+e= float(input('Enter the score of subject 5:'))
+ave = (a+b+c+d+e)/5
+print('Average =',ave)
+
+if ave >=90:
+    print('Grade: A')
+elif 80<=ave<90:
+    print('Grade: B')
+elif 70<=ave<80:
+    print('Grade: C')
+elif 60<=ave<70:
+    print('Grade: D')
+else:
+    print('Grade: F')
+    
+# Homework 1
+
+cost=float(input('Enter the actual cost:'))
+amount=float(input('Enter the sales amount:'))
+profit=amount-cost
+loss=cost-amount
+if amount> cost :
+    print('Total Profit =' , profit)
+elif cost>amount :
+    print('Total Loss Amount =', loss)
+else :
+    print('No profit No Loss!!!')
+
+    
+

@@ -1,0 +1,67 @@
+# Buying dinner ingredients
+dlist=[]
+print("Let's make a dinner time!!!")
+print("You must input 5 times!!!")
+for i in range(1,6):
+    ing=input('Please enter a dinner ingredient:')
+    dlist.append(ing)
+    dlist.sort()
+for j in range(1,6):
+    print(j,dlist[j-1])
+
+# Get length of a string (using a expression)
+words=['seoul', 'tokyo', 'moskoba', 'toronto','queensland', 'beijing','rome']
+sn=[i for i in words if len(i)>5]
+print('satisfy name : ', sn)
+sl=[len(i) for i in words if len(i)>5]
+print('satisfy length : ', sl)
+
+# prevent double voting
+voted={'John':'True', 'Alice':'False', 'Rosa':'True'}
+print(voted)
+
+while True:
+    name=input('Enter your name:')
+    if name =='':
+        break
+    elif name in voted:
+        if voted[name]=='True':
+            print(name, 'already voted!')
+        else:
+            print(name, ', please vote!')
+    else:
+        print(name,'has no voting rights.')
+        
+print(voted)
+
+# Lab 4(공약수 구하기)
+a= int(input('Please enter a number:'))
+b= int(input('Please enter a number:'))
+aset={i for i in range(1,a+1) if a%i==0}
+bset={i for i in range(1,b+1) if b%i==0}
+print(aset)
+print(bset)
+C_f=aset.intersection(bset)
+print('Common factor :', C_f)
+
+# Rock-Paper-Scissors (가위바위보)
+import random   # import to use random.choice()
+rps=['rock', 'paper', 'scissors']
+result={('rock','paper'): False, ('rock','scissors'):True,
+        ('paper','rock'):True, ('paper','scissors'): False,
+        ('scissors','paper'):True, ('scissors', 'rock'):False}
+
+while True:
+    player=input('rock/paper/scissors:')
+    com=random.choice(rps)
+    if player=='':
+        break
+    print('player --->',player)
+    print('computer --->', com)
+    if player==com:
+        print("It's a tie!")
+    elif result[player,com]== True:
+        print('You won! :)')
+    else:
+        print('You lost! :(')
+

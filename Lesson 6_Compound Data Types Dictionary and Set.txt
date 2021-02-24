@@ -1,0 +1,165 @@
+# Dictionary
+- unorderd set of key:value paris. 
+- values are any type, and keys almost any type.
+- it is defined in curly brackets { }.
+mydict = {}
+mydict = {'name':'Kim', 'year':1999}
+mydict['name'] # 'Kim'  = mydict.get('name')
+mydict['year'] # 1999 = mydict.get('year')
+
+mydict.get('blabla', 'The name is not in the dictionary') # The name is not ```
+
+mydict.update({'hobby':'collection'}) # {'name': 'Kim', 'year’: 1999, 'hobby': 'collection’}
+mydict.update({'score':98}) #{'name': 'Kim', 'year': 1999, 'hobby': 'collection', 'score':98}
+mydict['color']='red' #{'name': 'Kim', 'year': 1999, 'hobby': 'collection', 'score': 98, 'color': 'red'}
+
+mydict['name']='John' # change the value
+
+mydict.popitem() # 마지막 key:value 세트 삭제
+del mydict['year'] # year : 세트 삭제
+mydict.clear() #모두 삭제
+del mydict # dictionary 삭제
+
+capitaldict={'Korea':'Seoul', 'Vietnam':'Hanoi','Japan':'Tokyo'}
+'Korea' in capitaldict # True
+'China' in capitaldict # False
+len(capitaldict) #3
+
+# Example
+level={'low':1, 'medium':5}
+level['medium']  # 5
+'low' in level   # True
+level['high']=10 # Add
+del level['low']   # = level.pop('low')
+
+capitaldict = {'Korea':'Seoul', 'Vietnam':'Hanoi','Japan':'Tokyo'}
+capitaldict.keys()   # dict_keys(['Korea', 'Vietnam', 'Japan'])
+capitaldict.values()  # dict_values(['Seoul', 'Hanoi', 'Tokyo’])
+capitaldict.items() #dict_items([('Korea', 'Seoul'), ('Vietnam', 'Hanoi'), ('Japan', 'Tokyo')])
+
+# Use a for statement on a Dictionary
+capitaldict = {'Korea':'Seoul', 'Vietnam':'Hanoi','Japan':'Tokyo'}
+for x in capitaldict():
+    print(x)
+capitaldict = {'Korea':'Seoul', 'Vietnam':'Hanoi','Japan':'Tokyo'}
+for x in capitaldict.keys():
+    print(x)
+capitaldict = {'Korea':'Seoul', 'Vietnam':'Hanoi','Japan':'Tokyo'}
+for x in capitaldict.values():
+    print(x)
+capitaldict = {'Korea':'Seoul', 'Vietnam':'Hanoi','Japan':'Tokyo'}
+for x,y in capitaldict.items():
+    print(x,y)
+
+# Example
+capitaldict={'korea':'Seoul', 'Vietnam':'Hanoi', 'Japan':'Tokyo'}
+for x,y in capitaldict.items():
+    print('The capital of {0} is {1}' .format(x,y))
+
+# Using an if satatement
+# Example
+capitaldict={'Korea':'Seoul', 'Vietnam':'Hanoi', 'Japan':'Tokyo'}
+if 'Korea' in capitaldict:
+    capitaldict['Korea']='Jeju'    # capitaldic.update({'Korea':'Jeju'})
+    print(capitaldict)
+
+#Excercise 1
+maria={'Korean':93, 'English':88, 'Mathmatics':75, 'Science':91}
+ave=sum(maria.values())/len(maria)
+print('Average =', ave)    # Average = 86.75
+
+# 일반 dictionary 에선 copy 똑같이 적용. but nested dictionary는 deepcopy 사용해야함.
+first={'Alice':{'Python':3.5, 'java':3.8}, 'Bob':{'Python':4.5,'java':4.1}}
+import copy # copy() module을 불러옴
+second = copy.deepcopy(first) # Use deepcopy()
+second['Alice']['Python'] = 4.0
+first #{'Alice': {'Python': 3.5, 'java': 3.8}, 'Bob': {'Python': 4.5, 'java': 4.1}}
+second #{'Alice': {'Python': 4.0, 'java': 3.8}, 'Bob': {'Python': 4.5, 'java': 4.1}}
+id(first) #1544181542720
+id(second) #1544181472192
+first is second #False
+
+# removing a key-value pair  /  using for and if statement
+x={'a':10, 'b':20, 'c':30, 'd':40, 'e':50}
+x={key:value for key,value in x.items() if value !=20}
+x #{'a': 10, 'c': 30, 'd': 40, 'e': 50}
+
+# Example
+x={'a':10, 'b':20, 'c':30, 'd':40, 'e':50}
+x={key:value for key, value in x.items() if value>=20}
+x   #{'b': 20, 'c': 30, 'd': 40, 'e': 50}
+
+# dict() creates a dictionary
+li = [('name', 'Alice'),('year',1999)]
+info = dict(li)
+info   #{'name': 'Alice', 'year': 1999}
+
+# zip()
+title = ['name', 'age', 'birthday']
+values = ['Johnson', 20, '1998-04-15']
+info2 = dict(zip(title, values))
+info2 #{'name': 'Johnson', 'age': 20, 'birthday': '1998-04-15'}
+
+# Exercise 2
+a={'Alice':[1,2,3], 'Bob':20, 'Tony':15, 'Suzy':30}
+for x,y in a.items():
+    print('key = {0}, value={1}' .format(x,y))
+
+# 한개의 list에 여러개의 dict을 삽입 가능
+lst=[]
+lst.append({'FirstName':'Linda', 'LastName':'Matthew', 'ID':'123'})
+lst.append({'FirstName':'Sandra', 'LastName':'Parkin', 'ID':'125'})
+lst.append({'FirstName':'Bob', 'LastName':'Henry', 'ID':'666'})
+print(lst)
+
+for x in lst:
+    print(x['FirstName'], x['LastName'], x['ID'])
+
+# set 또한 dictionary와 같이 {}를 사용.
+# set은 순서가 없음. unordered , 그래서 cannot be indexed. 추가적으로 중복이 안됨.
+myset={'apple', 'banana', 'cherry', 'apple'}
+myset #{'apple', 'banana', 'cherry'}
+
+# membership test 가능
+'banana' not in myset
+
+#set()
+myset = set('apple') #{'a', 'e', 'l', 'p'}
+len(myset) # 4
+type(myset) # <class 'set'>
+
+# add, remove, pop, clear 모두 가능(단, set에서는 pop 코딩시 랜덤으로 삭제)
+# sorted() set, list, tuple, dict 모두 사용 가능.(요소들을 정렬해줌)
+
+# frozenset() 하면 더 이상 변경 불가.
+myset=frozenset(range(10))
+myset
+myset.update({10})   # error
+
+# union() 합집합
+x={1,2,3,4,5}
+y={4,5,6,7,8}
+x|y # = set.union(x,y) # = x.union(y)
+
+# intersection() 교집합
+x & y # = set.intersection(x,y) # = x.intersection(y)
+
+# differnce() 차집합
+ x-y # set.difference(x,y) # x.diffrence(y)
+
+# set experession
+x = {i for i in 'apple'}                          #{'e', 'l', 'a', 'p'}
+x = { i for i in 'apple' if i not in 'ap'}      #{'e', 'l'}
+
+# Example (1~100수 중에 3의 배수만 뽑아내기)
+x = {i for i in range(1,101) if i%3==0}
+x
+
+# Homework 2
+thr = {i for i in range(1,101) if i%3==0}
+print(thr)
+fiv = { i for i in range(1,101) if i%5==0}
+print(fiv)
+c_m = thr.intersection(fiv)
+print(c_m)
+sorted(c_m)

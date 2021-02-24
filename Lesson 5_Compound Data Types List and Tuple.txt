@@ -1,0 +1,277 @@
+# List -> sequence of elements. elements may be of different type. 대괄호로 묶고 쉼표로 분리.
+# listname=[1,2,'john',36.2,True,'john']
+# list range()
+test = list(range(0,10,1))
+# name.append(element) 마지막에 추가, name.insert(index,element) index입력해서 추가, len(name) list의 길이
+# name.remove(element) 삭제, del name[index] index입력해서 삭제, name.pop() 마지막 element 삭제, name.clear() remove all elements.
+
+# Example
+bucketlist = ['Seoul','Daegu','Busan']
+bucketlist.append('jeju')
+len(bucketlist)
+bucketlist.insert(1,'Daejon')
+bucketlist.remove('Seoul')
+bucketlist.pop()
+bucketlist.clear()
+
+# slice -> listname[start:end(not including this number):step]
+bucketlist=['Kim',22,'Seoul','Sokcho','Busan','Jeju']
+bucketlist[2:6] #['Seoul','Sokcho','Busan','Jeju']
+bucketlist[2:2] #[]
+bucketlist[3:-1] # from index 3 to second last -> ['Sokcho','Busan']
+bucketlist[3:] # from index 3 to the last -> ['Sokcho','Busan','Jeju']
+bucketlist[:3] # from index 0 to 2 -> ['Kim',22,'Seoul']
+
+# name.index(element) element의 index를 반환 단, 대소문자 구분 확실히.
+# Negative indexing
+my_list=["hello","world","hi","bye"]
+print(my_list[-1]) #bye
+print(my_list[-3]) #world
+print(my_list[-4]) #hello
+
+# Concatenation and Repetition Operators
+# list_A+list_B -> A와 B를 합침
+# list*3 -> list 세번 반복
+
+# Membership Test -> element in name -> True or False로 반
+goodPlace = ['Rome','Paris','Hanoi']
+'Rome' in goodPlace
+
+#name.count(element) -> element 갯수 카운트
+goodPlace=['Rome','Paris','Hanoi','Rome']
+goodPlace.count('Rome')
+
+#name.sort() 오름차순 정렬(숫자와 문자 같이 있을 경우 사용하지 못함. 하나를 지워준 뒤 sort)
+#name.reverse() 내림차순 정렬
+goodPlace=[22,'Rome','Paris','Hanoi']
+goodPlace.remove(22)
+goodPlace.sort()
+goodPlace.reverse()
+
+# Example
+bucketList=['Seoul','Daejon','Daegu','Busan','jeju']
+goodPlace=['Rome','Paris','Hanoi']
+bucketList[2:5]
+bucketList[1:5:2] # = bucketList[1:-1:2]
+bucketList+goodPlace
+'Paris' in goodPlace
+goodPlace.count('Rome')
+goodPlace.sort()
+
+# a is b -> True or flase
+# id() -> 객체의 주소 확인
+# assignment, copy() -> assignment는 str도 가능, str은 copy 불가
+a=[1,2,3,4,5]
+b=a
+a is b # True
+b[2]=10 # a와 b 둘 다 변경됨.
+
+a=[1,2,3,4,5]
+b=a.copy()
+a is b # False
+b[2] =10 # b만 바뀜.
+
+# Iterating over a List
+#Example
+test=[75,90,66,100,50]
+i=0
+k=0
+while i<5 :
+    j=test[i]
+    i+=1
+    k+=j
+print('total =', k)
+
+# equal
+test=[75,90,66,100,50]
+total=0
+for i in test:
+    total+=i
+print('total=',total)
+
+#split()
+quiz = 'python.program.good'
+sliceQuiz = quiz.split('.')
+
+#split() : list
+bucketList=['Busan,Jeju,Sokcho,Daejeon']
+for i in bucketList:
+    bucketSplit=i.split(',')
+
+#Example
+quiz=['1.Choose the capital of China./1)Qingtao/2)Shanghai/3)Beijing/3']
+for i in quiz:
+    quizSplit=i.split('/')
+
+for i in quizSplit:
+    print(i)
+
+#enumerate
+bucketList=['Busan','Jeju','Sokcho','Daejeon']
+for i, value in enumerate(bucketList):
+    print(i, value)
+
+#Exercise 1 : for statement with enumerate
+test=[57,99,78,85,60]
+for i, value in enumerate(test):
+    if value >=70:
+        print('No.{0} your score is {1}, pass!' .format(i+1, value))
+    else:
+        print('No.{0} your score is {1}, fail!' .format(i+1,value))
+
+# Nested List [세로=행][가로=열]
+s=[1,2,3]
+t=['begin',s,'end']
+t[0][1]
+
+# Example
+test=[[10,20],[30,40,],[50,60]]
+for i in test:
+    for j in i:
+        print(j, end=' ')
+    print()
+    
+test=[[10,20],[30,40],[50,60]]
+for i,j in test:
+    print(i,j)
+
+# Exercise 2
+s=[1,2,3]
+t=['begin',s,'end']
+for i in range(len(t)):
+    for j in range(len(t[i])):
+        print(t[i][j] ,end='')
+        
+# max(list) , min(list), sum(list) -> 최대, 최소, 합계
+# Changing float to integer in a List (정수로 변환) #[1,2,3,4]
+a=[1.2,2.5,3.7,4.6]
+for i in range(len(a)):
+    a[i]=int(a[i])
+a
+
+# Exercise 3 (Average 구하기)
+test=[75,90,66,100,50]
+print('Average:', sum(test)/len(test))  #Average : 76.2
+
+#Homework 1 : shopping list
+slist=[]
+while True:
+    ele=input('Plaese enter what you want:')
+    if ele=='quit':
+        break
+    else:
+        slist.append(ele)
+        slist.sort()
+        for i, value in enumerate(slist):
+            print(i+1, value)
+
+#Homework 1 : shopping list
+slist=[]
+while True:
+    ele=input('Plaese enter what you want:')
+    cnt=0
+    if ele=='quit':
+        break
+    else:
+        slist.append(ele)
+        slist.sort()
+        for i in slist:
+            cnt+=1
+            print(str(cnt), i)
+
+# Example
+sample = [i for i in range(10) if i % 2 == 0]
+sample
+
+# Example : Instead of a for statement, Use an expression
+lst=[]
+for value in range(0,101,2):
+    lst.append(value)
+print(lst)
+
+# Execise 5 - 짝수만 뽑기
+lst=[i for i in range(101) if i%2 ==0]
+print(lst)
+
+#Tuple
+#empty tuple
+my_data=()
+#tuple of strings
+my_data=('hi', 'hello', 'bye')
+#tuple of int, folat, string
+my_data2=(1,2.8,'Hello World')
+#tuple of string and list
+my_data3=('book',[1,2,3])
+#tuples inside another tuple
+#nested tuple
+my_data4=((2,3,4),(1,2,'hi'))
+#tuple with only a single item
+my_data=(99,)
+
+# Tuple has no 'append', 'remove' cannot be changed.
+# index, slice 모두 가능. concatenation(+), Repetition(*) 모두 가능.
+# Negative indexing
+my_data=(1,2,'Kevin',8.9)
+print(my_data[-1]) # 8.9
+print(my_data[-3]) # 2
+
+#Indexing elements in a nested tuple
+my_data=(1,'steve',(11,22,33))
+print(my_data[1][3]) #v
+print(my_data[2][1]) #22
+
+#len(), membership test 가능
+
+# nested tuple
+my_data4=((2,3,4,),(1,2,'hi'))
+len(my_data4)  # 2
+
+# zip
+a=('John','Charles','Mike')
+b=('Jenny','Christy','Monica','Vicky')
+x= zip(a,b)
+print(tuple(x))
+
+# Unpacking
+tu=(12,54,37,'bar')
+x,y,z,s = tu
+x   #12
+s   #bar
+
+#
+tu=(12,54,37,'bar')
+ple=(tu,(1,2))
+ple
+
+ple[0][0] #12
+ple[0][3] #'bar'
+ple[1][0] #1
+ple[1:] #((1,2),)
+ple[1][2] # tuple index out of range
+
+# tuple을 list로 변경
+tu= (10,20,30)
+li=list(tu)     # [10,20,30]
+li.append(40)    # [10,20,30,40]
+tu=tuple(li)    # (10,20,30,40)
+
+# Homework 2
+tu=('apple', [7,5,6], (1,2,3))
+print('original : tu =', tu)
+li=list(tu)
+print('casting : li =', li)
+tu2=tuple(li)
+print('conveted tuple : tu2 =', tu2)
+tu2[1][1] = 20
+print('tu2[1][1]=20, result :', tu2)
+tu2[1][2] = sum(tu2[1][0:2])
+print('sum(tu2[1][0:2]), result :', tu2)
+
+# List vs Tuple
+공통점
+- 임의 데이터 개체를 저장.
+- 시퀀스 데이터 유형
+- 데이터 객체 간에는 순서가 존재
+차이점
+- 튜플은 수정을 허용하지 않는다.
+- 튜플은 리스트가 가지고 있는 대부분의 방법을 가지고 있지 않다.

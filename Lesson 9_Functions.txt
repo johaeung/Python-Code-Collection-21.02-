@@ -1,0 +1,201 @@
+pow(2,3) # return x**y
+abs(-14) # absolute value
+max(70,85,57,99,88) #maximum value
+
+# import는 내장된 함수(external function)을 불러 올 때 사용
+# sys, pickle, time, calendar, random, webbrowser 등이 있음
+# dir(random) 이런식으로 random 안에 어떤 함수들이 있는지 확인 가능.
+
+import webbrowser
+webbrowser.open("http://google.com") # 홈페이지 실행
+
+import time
+time.asctime(time.localtime(time.time()))
+
+# User Defined Functions
+def hello(x):
+    y=10*x+2
+    return y
+hello(10)
+
+# Function with No Parameters
+def myfunc():
+    print('Hello from a function')
+myfunc()     # Hello from a function
+
+def myfunc():
+    print('Hello from a function')
+    return('end')
+myfunc()       # Hello from a function
+                      # 'end'
+
+# Function with Parameters
+def myfunc(name):
+    print('Hello, ' + name)
+myfunc('John')
+myfunc('rosa')
+
+def add(x,y):
+    sum = x+y
+    return sum
+add(13,2)
+
+# Function with Parameters and Return
+def three(x):
+    print('Returns three values.')
+    return(x,x*2,x*3)
+three(5)
+a,b,c=three(5)
+a   #5
+
+def three(x,y,z):
+    sum = x+y+z
+    mul = x*y*z
+    div = x/y
+    return sum, mul, div
+three(5,2,4) #(11, 40, 2.5)
+
+# Example
+def func_add(x,y):
+    add=x+y
+    return(add)
+def func_sub(x,y):
+    sub=x-y
+    return(sub)
+print('add result =', func_add(10,20))
+print('sub result= ', func_sub(10,20))
+
+# Global & Local Variables
+x=5 # "x" is a global variable
+def myfunc(y):
+    total=x+y
+    return total
+myfunc(4)
+
+# Exercise 1
+def calc(i,a,b):
+    if i==1:
+        print('{0}+{1}={2}' .format(a,b,a+b))
+    elif i==2:
+        print('{0}-{1}={2}' .format(a,b,a-b))
+    elif i==3:
+        print('{0}*{1}={2}' .format(a,b,a*b))
+    elif i==4:
+        print('{0}/{1}={2}' .format(a,b,a/b))
+    else:
+        print('invalid input')
+opt=int(input('Enter choice(1.add/2.subtract/3.multiply/4.divide):'))
+fir=int(input('Enter first number:'))
+sec=int(input('Enter second number:'))
+calc(opt,fir,sec)
+
+# Default Function Parameter
+def def_para(country='Korea'):
+    print("I'm from " + country)
+def_para()                                 # I'm from Korea 
+def_para('India')                            # I'm from India
+def_para('Brazil')                              # I'm from Brazil
+
+# Exercise 2
+def def_average(name, kor, eng, mat=50, sci=60):
+    print("{}'s average =".format(name), (kor+eng+mat+sci)/4)
+def_average('john', 80, 75, 93, 87)
+def_average('rosa', 80, 75)
+
+# *args Argument
+def add(choice,*args):
+    result=0
+    for i in args:
+        result=result+i
+    return result
+x=add('plus 1', 1,2,3,4,5,6,7,8,9,10)
+print(x)
+
+# Example 2
+def add_mul(choice, *args):
+    if choice == 'add':
+        result=0
+        for i in args:
+            result+=i
+    elif choice == 'mul':
+        result=1
+        for i in args:
+            result*=i
+    return result
+
+x= add_mul('add',1,2,3,4,5,6,7,8,9,10)
+print(x)                                             # 55
+x= add_mul('mul',1,2,3,4,5,6,7,8,9,10)
+print(x)                                               #3628800
+
+# **kwargs Argument (keyword arguments)
+def keyword(**kwargs):
+    print(kwargs)
+keyword(a=1)                                      # {'a': 1}
+keyword(name='foo', age=3, addr='seoul')   # {'name': 'foo', 'age': 3, 'addr': 'seoul'}
+
+# Unpacking a List and Tuple
+def unpacking(a,b,c):
+    print(a)
+    print(b)
+    print(c)
+mylist=[10,20,30]
+unpacking(*mylist)
+
+mytuple=(10,20,30)
+unpacking(*mytuple)
+
+# Unpacking a Dictionary
+def unpacking(name, age, address):
+    print('Name:', name)
+    print('Age:', age)
+    print('Address:', address)
+    
+mydict={'name':'kim', 'age':22, 'address':'Seoul'}
+unpacking(**mydict)
+
+# Unpacking a Dictionary(2)
+def unpacking(**kwargs):
+    print('Student Name:', kwargs['name'])
+    print('Student phone:', kwargs['phone'])
+    print('Student address:', kwargs['address'])
+    
+mydict={'name':'Sam', 'phone':112, 'address':'London', 'section':'A'}
+unpacking(**mydict)
+
+# Exercise 3
+def func(a,b):
+    print('quotient: {0}, remainder: {1}' .format(a,b))
+    
+fir=int(input('Enter first number:'))
+sec=int(input('Enter second number:'))
+quo=fir//sec
+rem=fir%sec
+
+func(quo,rem)
+
+# Recursion (반복, 재귀, 되풀이)
+def hello(count):
+    if count==0:
+        return
+    print('Hello, python!', count)
+    count-=1
+    hello(count)
+hello(5)
+
+# Factorial
+def factorial(n):
+    if n==1:
+        return 1
+    print('n =', n)
+    return n*factorial(n-1)
+print(factorial(5))
+
+# Homework
+score = [73, 95, 80, 57, 99]
+def func_sum(*args):
+    total = sum(*args)
+    ave = total/len(*args)
+    print('Total score:', total)
+    print('Average score:', ave)
+func_sum(score)
